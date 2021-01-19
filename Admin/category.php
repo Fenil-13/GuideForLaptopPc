@@ -82,10 +82,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="col-md-2 leftSection">
            <h1 class="ml-3">Laptop Arena Admin Panel</h1>
             <nav class="nav nav-pills flex-column flex-sm-column ml-3 mt-3">
-                <a class="flex-sm-fill text-sm-center nav-link " href="product.php">Add Product</a>
+            <a class="flex-sm-fill text-sm-center nav-link " href="index.php">Add Product</a>
                 <a class="flex-sm-fill text-sm-center nav-link active" href="category.php">Add to Catergory</a>
                 <a class="flex-sm-fill text-sm-center nav-link" href="tip.php">Add Tips</a>
-            </nav>
+                <a class="flex-sm-fill text-sm-center nav-link" href="update.php">Select Product</a>
+                <a class="flex-sm-fill text-sm-center nav-link" href="updateDetails.php">Update Product</a>
         </div>
         <div class="col-md-10">
         <div class="container">
@@ -121,6 +122,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           <option>desktop_category</option>
           <option>accessories_category</option>
           <option>gaming_category</option>
+          <option>custome_pc</option>
         </select>
       </div>
 
@@ -161,6 +163,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           <option>Professional Desktop</option>
           <option>Laptop Accessories</option>
           <option>General Desk Accessories</option>
+          <option>PROCESSOR</option>
+          <option>MOTHERBOARD</option>
+          <option>RAM</option>
+          <option>STORAGE</option>
+          <option>CABINET</option>
+          <option>COOLER</option>
+          <option>GRAPHICS</option>
         </select>
       </div>
 

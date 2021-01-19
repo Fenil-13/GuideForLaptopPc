@@ -42,6 +42,7 @@
         // collect value of input field
         $cat_name= $_GET["category"];
         $cat_name=str_replace("_"," ",$cat_name);
+        $main_cat_name= $_GET["main_category"];
     }
 
     ?>
@@ -55,9 +56,8 @@
         <hr>
         <?php
             
-            $sql = "SELECT * FROM laptop_category WHERE Laptop_category='$cat_name'";
+            $sql = "SELECT * FROM $main_cat_name WHERE $main_cat_name='$cat_name'";
             $result = $conn->query($sql);
-
             if ($result->num_rows > 0) {
             while(($row = $result->fetch_assoc())) {
                 $product_id=$row["product_id"];

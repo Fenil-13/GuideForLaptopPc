@@ -1,0 +1,45 @@
+.detailsCard{
+    margin-top: 10px;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.pictureSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.detailsSection a{
+   display: block;
+   margin-top: 10px;
+}
+
+.btnDetails{
+    display: block;
+    background-color: #3167EB;
+    border: 1px solid white;
+    width: 60%;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.btnAddToWishlist{
+    display: block;
+    background-color: white;
+    border: 1px solid black;
+    width: 60%;
+    color: black;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 10px;
+}
+.priceSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+

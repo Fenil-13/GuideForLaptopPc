@@ -35,195 +35,121 @@
 
 <body>
     <?php
-    include 'header.php'?>
+    include 'header.php';
+    require 'utils/_dbconnect.php';?>
 
 
-    <div class="container">
-        <div class="seeAll">
+<div class="container">
+    <div class="seeAll">
             <h4 class="bold mt-4">
-                Accessories 1
+            Gaming Accessories
             </h4>
-            <button type="button" class="btn btn-outline-primary btn-sm">See All</button>
+            <button type="button" class="btn btn-outline-primary btn-sm btnSeeAll"  id="Gaming Accessories">See All</button>
         </div>
         
         <hr>
         <div class="row">
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-        </div>
+            <?php
+                $sql = "SELECT * FROM accessories_category WHERE accessories_category='Gaming Accessories'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                $count=0;
+                while(($row = $result->fetch_assoc()) && $count<4) {
+                    $product_id=$row["product_id"];
 
+                    $sql_laptop  = "SELECT * FROM product WHERE Product_id='$product_id'";
+                    $result_laptop = $conn->query($sql_laptop);
+                    
+                    if ($result_laptop->num_rows > 0) {
+                
+                    while($row_laptop = $result_laptop->fetch_assoc()) {
+                        echo '<div class="col-md-3 col-sm-12">
+                        <div class="itemCard" id="'.$row_laptop["Product_id"].'">
+                            <img src="img/items/'.$row_laptop["Img_Link"].'" class="img-fluid" alt="" height="50%">
+                        </div>
+                        </div>';
+                    }
+                    }
+                    $count=$count+1;
+                }
+                }
+
+            ?>
+        </div>
+        
 
         <div class="seeAll">
             <h4 class="bold mt-4">
-                Accessories 1
+            Laptop Accessories
             </h4>
-            <button type="button" class="btn btn-outline-primary btn-sm">See All</button>
+            <button type="button" class="btn btn-outline-primary btn-sm btnSeeAll"  id="Laptop Accessories">See All</button>
         </div>
         
         <hr>
         <div class="row">
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-        </div>
+            <?php
+                $sql = "SELECT * FROM accessories_category WHERE accessories_category='Laptop Accessories'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                $count=0;
+                while(($row = $result->fetch_assoc()) && $count<4) {
+                    $product_id=$row["product_id"];
 
+                    $sql_laptop  = "SELECT * FROM product WHERE Product_id='$product_id'";
+                    $result_laptop = $conn->query($sql_laptop);
+                    
+                    if ($result_laptop->num_rows > 0) {
+                
+                    while($row_laptop = $result_laptop->fetch_assoc()) {
+                        echo '<div class="col-md-3 col-sm-12">
+                        <div class="itemCard" id="'.$row_laptop["Product_id"].'">
+                            <img src="img/items/'.$row_laptop["Img_Link"].'" class="img-fluid" alt="" height="50%">
+                        </div>
+                        </div>';
+                    }
+                    }
+                    $count=$count+1;
+                }
+                }
+
+            ?>
+        </div>
+        
         <div class="seeAll">
             <h4 class="bold mt-4">
-                Accessories 1
+            General Desk Accessories
             </h4>
-            <button type="button" class="btn btn-outline-primary btn-sm">See All</button>
+            <button type="button" class="btn btn-outline-primary btn-sm btnSeeAll"  id="General Desk Accessories">See All</button>
         </div>
         
         <hr>
         <div class="row">
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-        </div>
+            <?php
+                $sql = "SELECT * FROM accessories_category WHERE accessories_category='General Desk Accessories'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                $count=0;
+                while(($row = $result->fetch_assoc()) && $count<4) {
+                    $product_id=$row["product_id"];
 
-        <div class="seeAll">
-            <h4 class="bold mt-4">
-                Accessories 1
-            </h4>
-            <button type="button" class="btn btn-outline-primary btn-sm">See All</button>
-        </div>
-        
-        <hr>
-        <div class="row">
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-        </div>
+                    $sql_laptop  = "SELECT * FROM product WHERE Product_id='$product_id'";
+                    $result_laptop = $conn->query($sql_laptop);
+                    
+                    if ($result_laptop->num_rows > 0) {
+                
+                    while($row_laptop = $result_laptop->fetch_assoc()) {
+                        echo '<div class="col-md-3 col-sm-12">
+                        <div class="itemCard" id="'.$row_laptop["Product_id"].'">
+                            <img src="img/items/'.$row_laptop["Img_Link"].'" class="img-fluid" alt="" height="50%">
+                        </div>
+                        </div>';
+                    }
+                    }
+                    $count=$count+1;
+                }
+                }
 
-        <div class="seeAll">
-            <h4 class="bold mt-4">
-                Accessories 1
-            </h4>
-            <button type="button" class="btn btn-outline-primary btn-sm">See All</button>
-        </div>
-        
-        <hr>
-        <div class="row">
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-        </div>
-
-        <div class="seeAll">
-            <h4 class="bold mt-4">
-                Accessories 1
-            </h4>
-            <button type="button" class="btn btn-outline-primary btn-sm">See All</button>
-        </div>
-        
-        <hr>
-        <div class="row">
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="itemCard">
-                    <img src="img/items/10.jpg" class="img-fluid" alt="" height="50%">
-                </div>
-            </div>
+            ?>
         </div>
     </div>
 
@@ -232,6 +158,7 @@
   <?php
   include 'footer.php';
   ?>
+  <script src="Js/category.js"></script>
 </body>
 
 </html>

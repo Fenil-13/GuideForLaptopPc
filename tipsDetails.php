@@ -50,7 +50,6 @@
         <?php
             $sql = "SELECT * FROM tip_category WHERE Tip_No='$tip_no'";
             $result = $conn->query($sql);
-            
             if ($result->num_rows > 0) {
               while($row = $result->fetch_assoc()) {
             
@@ -65,19 +64,19 @@
                 <div class="Recommended mt-3">
                     <div class="row">
                         <div class="col-md-3 col-sm-12 m-3 recommendedCard">
-                            <img src="img/items/1.jpg" alt="" height="100px" class="img-fluid">
+                            <img src="img/items/'.$row["Img_Link"].'" alt="" height="100px" class="img-fluid">
                             <p  class="bold">how to enavle dark mode in whatsapp</p>
                         </div>
                         <div class="col-md-3 col-sm-12 m-3 recommendedCard">
-                            <img src="img/items/1.jpg" alt="" height="100px" class="img-fluid">
+                            <img src="img/items/t2.jpg" alt="" height="100px" class="img-fluid">
                             <p  class="bold">how to see delete msg in whatsapp</p>
                         </div>
                         <div class="col-md-3 col-sm-12 m-3 recommendedCard">
-                            <img src="img/items/1.jpg" alt="" height="100px" class="img-fluid">
+                            <img src="img/items/t3.jpg" alt="" height="100px" class="img-fluid">
                             <p  class="bold">how to change bio in Instagram</p>
                         </div>
                         <div class="col-md-3 col-sm-12 m-3 recommendedCard">
-                            <img src="img/items/1.jpg" alt="" height="100px" class="img-fluid">
+                            <img src="img/items/t4.jpg" alt="" height="100px" class="img-fluid">
                             <p  class="bold">how to enavle dark mode in whatsapp</p>
                         </div>
                     </div>

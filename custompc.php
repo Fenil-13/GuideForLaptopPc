@@ -46,65 +46,369 @@
       <div class="col-md-2 col-sm-12 leftSection">
         <ul class="nav flex-column">
           <li class="nav-item ">
-            <a class="nav-link active" href="#"><button type="button" class="btn btn-secondary">SELECT PROCESSOR</button></a>
+            <a class="nav-link active" href="#"><button type="button" class="btn btn-secondary selectButtons"id="processorBtn">SELECT PROCESSOR</button></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary">SELECT MOTHERBOARD</button></a>
+            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary selectButtons"id="motherboradBtn">SELECT MOTHERBOARD</button></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary">SELECT RAM</button></a>
+            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary selectButtons"id="ramBtn">SELECT RAM</button></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary">SELECT STORAGE 1</button></a>
+            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary selectButtons"id="storageBtn1">SELECT STORAGE 1</button></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary">SELECT STORAGE 2</button></a>
+            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary selectButtons"id="storageBtn2">SELECT STORAGE 2</button></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary">SELECT CABINET</button></a>
+            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary selectButtons"id="cabinetBtn">SELECT CABINET</button></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary">SELECT CABINET</button></a>
+            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary selectButtons"id="coolerBtn">SELECT COOLER</button></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary">SELECT COOLER</button></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary">SELECT GRAPHICS CARD</button></a>
+            <a class="nav-link" href="#"><button type="button" class="btn btn-secondary selectButtons"id="graphicBtn">SELECT GRAPHICS CARD</button></a>
           </li>
         </ul>
       </div>
       <div class="col-md-10 col-sm-12 rightSection">
+        <div id="processorDiv" class="divContainer mt-3">
+          <h3 class="bold">SELECT PROCESSOR</h3>  
 
-        <h3 class="bold">SELECT PROCESSOR</h3>  
+          <div class="row">
+          <?php
+              $sql = "SELECT * FROM custome_pc WHERE custome_cat='PROCESSOR'";
+              $result = $conn->query($sql);
 
-        <div class="row">
-         <?php
-            $sql = "SELECT * FROM custome_pc WHERE custome_cat='PROCESSOR'";
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-              while($row = $result->fetch_assoc()) {
+
+              if ($result->num_rows > 0) {
+              
+                while($row = $result->fetch_assoc()) {
                   $product_id=$row["product_id"];
-                $sql_custom = "SELECT * FROM product WHERE Product_id='$product_id'";
-                $result_custom = $conn->query($sql_custom);
-            
-                if ($result_custom->num_rows > 0) {
-                    while($row_custom = $result_custom->fetch_assoc()) {
-                
-                        echo '<div class="col-md-3 col-sm-12 mt-5">
-                        <div class="choiceItem">
-                        <img src="img/items/'.$row_custom["Img_Link"].'" alt="" class="img-fluid">
-                        <p>'.$row_custom["Name"].'</p>
-                        <p class="bold">$158</p>
-                        <button type="button" class="btn btn-outline-primary btnSelected">Select</button>
+
+
+                  $sql_custom = "SELECT * FROM product WHERE Product_id='$product_id'";
+                  $result_custom = $conn->query($sql_custom);
+
+
+                  if ($result_custom->num_rows > 0) {
+                  
+                      while($row_custom = $result_custom->fetch_assoc()) {
+                        
+                         echo '<div class="col-md-3 col-sm-12 mt-5">
+                        <div class="choiceItem" id="card'.$row_custom['Product_id'].'">
+                          <img src="img/items/'.$row_custom["Img_Link"].'" alt="" class="img-fluid">
+                          <p>'.$row_custom["Name"].'</p>
+                           <p class="bold">$'.$row_custom["Price"].'</p>
+                          <button type="button" class="btn btn-outline-primary btnSelect '.$row_custom['Name'].'" id="'.$row_custom['Product_id'].'" value="'.$row_custom['Price'].'">Select</button>
                         </div>
                         </div>';
-                     }
+                      }
+                  }
                 }
               }
-            }
-         ?>
+          ?> 
+          </div>
+        </div>
+
+        <div id="motherboradDiv" class="divContainer mt-3">
+          <h3 class="bold">SELECT MOTHERBOARD</h3>  
+
+          <div class="row">
+          <?php
+              $sql = "SELECT * FROM custome_pc WHERE custome_cat='MOTHERBOARD'";
+              $result = $conn->query($sql);
+
+
+              if ($result->num_rows > 0) {
+              
+                while($row = $result->fetch_assoc()) {
+                  $product_id=$row["product_id"];
+
+
+                  $sql_custom = "SELECT * FROM product WHERE Product_id='$product_id'";
+                  $result_custom = $conn->query($sql_custom);
+
+
+                  if ($result_custom->num_rows > 0) {
+                  
+                      while($row_custom = $result_custom->fetch_assoc()) {
+                        
+                        
+                        echo '<div class="col-md-3 col-sm-12 mt-5">
+                        <div class="choiceItem" id="card'.$row_custom['Product_id'].'">
+                          <img src="img/items/'.$row_custom["Img_Link"].'" alt="" class="img-fluid">
+                          <p>'.$row_custom["Name"].'</p>
+                           <p class="bold">$'.$row_custom["Price"].'</p>
+                          <button type="button" class="btn btn-outline-primary btnSelect '.$row_custom['Name'].'" id="'.$row_custom['Product_id'].'" value="'.$row_custom['Price'].'">Select</button>
+                        </div>
+                        </div>';
+                      }
+                  }
+                }
+              }
+          ?> 
+          </div>
+        </div>
+
+        <div id="ramDiv" class="divContainer mt-3">
+          <h3 class="bold">SELECT RAM</h3>  
+
+          <div class="row">
+          <?php
+              $sql = "SELECT * FROM custome_pc WHERE custome_cat='RAM'";
+              $result = $conn->query($sql);
+
+
+              if ($result->num_rows > 0) {
+              
+                while($row = $result->fetch_assoc()) {
+                  $product_id=$row["product_id"];
+
+
+                  $sql_custom = "SELECT * FROM product WHERE Product_id='$product_id'";
+                  $result_custom = $conn->query($sql_custom);
+
+
+                  if ($result_custom->num_rows > 0) {
+                  
+                      while($row_custom = $result_custom->fetch_assoc()) {
+                        
+                        echo '<div class="col-md-3 col-sm-12 mt-5">
+                        <div class="choiceItem" id="card'.$row_custom['Product_id'].'">
+                          <img src="img/items/'.$row_custom["Img_Link"].'" alt="" class="img-fluid">
+                          <p>'.$row_custom["Name"].'</p>
+                           <p class="bold">$'.$row_custom["Price"].'</p>
+                          <button type="button" class="btn btn-outline-primary btnSelect '.$row_custom['Name'].'" id="'.$row_custom['Product_id'].'" value="'.$row_custom['Price'].'">Select</button>
+                        </div>
+                        </div>';
+                    
+                      }
+                  }
+                }
+              }
+          ?> 
+          </div>
+        </div>
+
+
+        <div id="storageDiv1" class="divContainer mt-3">
+          <h3 class="bold">SELECT STORAGE1</h3>  
+
+          <div class="row">
+          <?php
+              $sql = "SELECT * FROM custome_pc WHERE custome_cat='STORAGE'";
+              $result = $conn->query($sql);
+
+
+              if ($result->num_rows > 0) {
+              
+                while($row = $result->fetch_assoc()) {
+                  $product_id=$row["product_id"];
+
+
+                  $sql_custom = "SELECT * FROM product WHERE Product_id='$product_id'";
+                  $result_custom = $conn->query($sql_custom);
+
+
+                  if ($result_custom->num_rows > 0) {
+                  
+                      while($row_custom = $result_custom->fetch_assoc()) {
+                        
+                        echo '<div class="col-md-3 col-sm-12 mt-5">
+                        <div class="choiceItem" id="card'.$row_custom['Product_id'].'">
+                          <img src="img/items/'.$row_custom["Img_Link"].'" alt="" class="img-fluid">
+                          <p>'.$row_custom["Name"].'</p>
+                           <p class="bold">$'.$row_custom["Price"].'</p>
+                          <button type="button" class="btn btn-outline-primary btnSelect '.$row_custom['Name'].'" id="'.$row_custom['Product_id'].'" value="'.$row_custom['Price'].'">Select</button>
+                        </div>
+                        </div>';
+                      }
+                  }
+                }
+              }
+          ?> 
+          </div>
+        </div>
+
+        <div id="storageDiv2" class="divContainer mt-3">
+          <h3 class="bold">SELECT STORAGE 2</h3>  
+
+          <div class="row">
+          <?php
+              $sql = "SELECT * FROM custome_pc WHERE custome_cat='STORAGE'";
+              $result = $conn->query($sql);
+
+
+              if ($result->num_rows > 0) {
+              
+                while($row = $result->fetch_assoc()) {
+                  $product_id=$row["product_id"];
+
+
+                  $sql_custom = "SELECT * FROM product WHERE Product_id='$product_id'";
+                  $result_custom = $conn->query($sql_custom);
+
+
+                  if ($result_custom->num_rows > 0) {
+                  
+                      while($row_custom = $result_custom->fetch_assoc()) {
+                        
+                        echo '<div class="col-md-3 col-sm-12 mt-5">
+                        <div class="choiceItem" id="card'.$row_custom['Product_id'].'">
+                          <img src="img/items/'.$row_custom["Img_Link"].'" alt="" class="img-fluid">
+                          <p>'.$row_custom["Name"].'</p>
+                           <p class="bold">$'.$row_custom["Price"].'</p>
+                          <button type="button" class="btn btn-outline-primary btnSelect '.$row_custom['Name'].'" id="'.$row_custom['Product_id'].'" value="'.$row_custom['Price'].'">Select</button>
+                        </div>
+                        </div>';
+                      }
+                  }
+                }
+              }
+          ?> 
+          </div>
+        </div>
+
+
+        <div id="cabinetDiv" class="divContainer mt-3">
+          <h3 class="bold">SELECT CABINET</h3>  
+
+          <div class="row">
+          <?php
+              $sql = "SELECT * FROM custome_pc WHERE custome_cat='CABINET'";
+              $result = $conn->query($sql);
+
+
+              if ($result->num_rows > 0) {
+              
+                while($row = $result->fetch_assoc()) {
+                  $product_id=$row["product_id"];
+
+
+                  $sql_custom = "SELECT * FROM product WHERE Product_id='$product_id'";
+                  $result_custom = $conn->query($sql_custom);
+
+
+                  if ($result_custom->num_rows > 0) {
+                  
+                      while($row_custom = $result_custom->fetch_assoc()) {
+                       echo '<div class="col-md-3 col-sm-12 mt-5">
+                        <div class="choiceItem" id="card'.$row_custom['Product_id'].'">
+                          <img src="img/items/'.$row_custom["Img_Link"].'" alt="" class="img-fluid">
+                          <p>'.$row_custom["Name"].'</p>
+                           <p class="bold">$'.$row_custom["Price"].'</p>
+                          <button type="button" class="btn btn-outline-primary btnSelect '.$row_custom['Name'].'" id="'.$row_custom['Product_id'].'" value="'.$row_custom['Price'].'">Select</button>
+                        </div>
+                        </div>';
+                      }
+                  }
+                }
+              }
+          ?> 
+          </div>
+        </div>
+
+
+        <div id="coolerDiv" class="divContainer mt-3">
+          <h3 class="bold">SELECT COOLER</h3>  
+
+          <div class="row">
+          <?php
+              $sql = "SELECT * FROM custome_pc WHERE custome_cat='COOLER'";
+              $result = $conn->query($sql);
+
+
+              if ($result->num_rows > 0) {
+              
+                while($row = $result->fetch_assoc()) {
+                  $product_id=$row["product_id"];
+
+
+                  $sql_custom = "SELECT * FROM product WHERE Product_id='$product_id'";
+                  $result_custom = $conn->query($sql_custom);
+
+
+                  if ($result_custom->num_rows > 0) {
+                  
+                      while($row_custom = $result_custom->fetch_assoc()) {
+                        
+                        echo '<div class="col-md-3 col-sm-12 mt-5">
+                        <div class="choiceItem" id="card'.$row_custom['Product_id'].'">
+                          <img src="img/items/'.$row_custom["Img_Link"].'" alt="" class="img-fluid">
+                          <p>'.$row_custom["Name"].'</p>
+                           <p class="bold">$'.$row_custom["Price"].'</p>
+                          <button type="button" class="btn btn-outline-primary btnSelect '.$row_custom['Name'].'" id="'.$row_custom['Product_id'].'" value="'.$row_custom['Price'].'">Select</button>
+                        </div>
+                        </div>';
+                      
+                      }
+                  }
+                }
+              }
+          ?> 
+          </div>
+        </div>
+
+        <div id="graphicDiv" class="divContainer mt-3">
+          <h3 class="bold">SELECT GRAPHICS</h3>  
+
+          <div class="row">
+          <?php
+              $sql = "SELECT * FROM custome_pc WHERE custome_cat='COOLER'";
+              $result = $conn->query($sql);
+
+
+              if ($result->num_rows > 0) {
+              
+                while($row = $result->fetch_assoc()) {
+                  $product_id=$row["product_id"];
+
+
+                  $sql_custom = "SELECT * FROM product WHERE Product_id='$product_id'";
+                  $result_custom = $conn->query($sql_custom);
+
+
+                  if ($result_custom->num_rows > 0) {
+                  
+                      while($row_custom = $result_custom->fetch_assoc()) {
+                        
+                        echo '<div class="col-md-3 col-sm-12 mt-5">
+                        <div class="choiceItem" id="card'.$row_custom['Product_id'].'">
+                          <img src="img/items/'.$row_custom["Img_Link"].'" alt="" class="img-fluid">
+                          <p>'.$row_custom["Name"].'</p>
+                          <p class="bold">$'.$row_custom["Price"].'</p>
+                          <button type="button" class="btn btn-outline-primary btnSelect" id="'.$row_custom['Product_id'].'" value="'.$row_custom['Price'].'">Select</button>
+                        </div>
+                        </div>';
+                      }
+                  }
+                }
+              }
+          ?> 
+          </div>
+        </div>
+        
+
+        <button type="button" class="btn btn-success mt-3" id="btnNext">Next</button>
+        <div class="container">
+
+      
+          <div class="card text-center mt-3 w-100">
+            <div class="card-header">
+              LaptopArena Custom PC
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Total Payout</h5>
+              <div id="productList">
+              </div>
+              <p class="card-text" id="totalCost">0</p>
+              <a href="#" class="btn btn-primary"payNow id="payNow">PayNow</a>
+            </div>
+            <div class="card-footer text-muted">
+              Thanks for chossing our service
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -114,6 +418,10 @@
 
   <?php
   include 'footer.php'?>
+
+<script src="Js/custompc.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </body>
 
 </html>

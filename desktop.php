@@ -44,15 +44,15 @@
     <div class="container">
         <div class="seeAll">
             <h4 class="bold mt-4">
-                Gaming Laptop
+                Gaming Desktop
             </h4>
-            <button type="button" class="btn btn-outline-primary btn-sm btnSeeAll"  id="Dell Laptop">See All</button>
+            <button type="button" class="btn btn-outline-primary btn-sm btnSeeAll"  id="Gaming Desktop">See All</button>
         </div>
         
         <hr>
         <div class="row">
             <?php
-                $sql = "SELECT * FROM gaming_category WHERE Gaming_category='Gaming Laptop'";
+                $sql = "SELECT * FROM desktop_category WHERE desktop_category='Gaming Desktop'";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                 $count=0;
@@ -82,15 +82,15 @@
 
         <div class="seeAll">
             <h4 class="bold mt-4">
-            Gaming Accessories
+            Student Desktop
             </h4>
-            <button type="button" class="btn btn-outline-primary btn-sm btnSeeAll"  id="Dell Laptop">See All</button>
+            <button type="button" class="btn btn-outline-primary btn-sm btnSeeAll"  id="Student Desktop">See All</button>
         </div>
         
         <hr>
         <div class="row">
             <?php
-                $sql = "SELECT * FROM gaming_category WHERE Gaming_category='Gaming Accessories'";
+                $sql = "SELECT * FROM desktop_category WHERE desktop_category='Student Desktop'";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                 $count=0;
@@ -119,15 +119,52 @@
         
         <div class="seeAll">
             <h4 class="bold mt-4">
-            Gaming Desktop
+            Professional Desktop
             </h4>
-            <button type="button" class="btn btn-outline-primary btn-sm btnSeeAll"  id="Dell Laptop">See All</button>
+            <button type="button" class="btn btn-outline-primary btn-sm btnSeeAll"  id="Professional Laptop">See All</button>
         </div>
         
         <hr>
         <div class="row">
             <?php
-                $sql = "SELECT * FROM gaming_category WHERE Gaming_category='Gaming Desktop'";
+                $sql = "SELECT * FROM desktop_category WHERE desktop_category='Professional Desktop'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                $count=0;
+                while(($row = $result->fetch_assoc()) && $count<4) {
+                    $product_id=$row["product_id"];
+
+                    $sql_laptop  = "SELECT * FROM product WHERE Product_id='$product_id'";
+                    $result_laptop = $conn->query($sql_laptop);
+                    
+                    if ($result_laptop->num_rows > 0) {
+                
+                    while($row_laptop = $result_laptop->fetch_assoc()) {
+                        echo '<div class="col-md-3 col-sm-12">
+                        <div class="itemCard" id="'.$row_laptop["Product_id"].'">
+                            <img src="img/items/'.$row_laptop["Img_Link"].'" class="img-fluid" alt="" height="50%">
+                        </div>
+                        </div>';
+                    }
+                    }
+                    $count=$count+1;
+                }
+                }
+
+            ?>
+        </div>
+
+        <div class="seeAll">
+            <h4 class="bold mt-4">
+            Workstation Desktop
+            </h4>
+            <button type="button" class="btn btn-outline-primary btn-sm btnSeeAll"  id="Workstation Desktop">See All</button>
+        </div>
+        
+        <hr>
+        <div class="row">
+            <?php
+                $sql = "SELECT * FROM desktop_category WHERE desktop_category='Workstation Desktop'";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                 $count=0;
@@ -162,7 +199,7 @@
     <?php
     include 'footer.php';
     ?>
-
+<script src="Js/category.js"></script>
 </body>
 
 </html>

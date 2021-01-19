@@ -89,17 +89,17 @@
       <div class="row">
         <div class="col-sm-1 col-md-4">
           <div class="card m-3" id="cat1">
-            <img src="img/cat1.jpg" class="card-img-top" alt="...">
+            <a href="laptop.php" target="_blank"><img src="img/cat1.png" class="card-img-top" alt="..."></a>
           </div>
         </div>
         <div class="col-sm-1 col-md-4">
           <div class="card m-3" id="cat2">
-            <img src="img/cat2.jpg" class="card-img-top" alt="...">
+            <a href="gaming.php" target="_blank"><img src="img/cat2.png" class="card-img-top" alt="..."></a>
           </div>
         </div>
         <div class="col-sm-1 col-md-4">
           <div class="card m-3" id="cat3">
-            <img src="img/cat3.jpg" class="card-img-top" alt="...">
+            <a href="accessories.php" target="_blank"><img src="img/cat3.png" class="card-img-top" alt="..."></a>
           </div>
         </div>
       </div>
@@ -116,36 +116,66 @@
           
             $sql = "SELECT 	product_id FROM laptop_category WHERE trending_status='true'";
             $result = $conn->query($sql);
-
+           
             if ($result->num_rows > 0) {
               // output data of each row
-              while($row = $result->fetch_assoc()) {
-                $product_id=$row["product_id"];
-
+              $count_laptop=0;
+              while(($row = $result->fetch_assoc()) and $count_laptop < 3) {
+                $product_id =$row["product_id"] ;
 
                 $sql_laptop = "SELECT * FROM product WHERE Product_id ='$product_id'";
                 $result_laptop = $conn->query($sql_laptop);
 
                 if ($result_laptop->num_rows > 0) {
-                    while($row_laptop = $result_laptop->fetch_assoc()) {
+                  
+                    while(($row_laptop = $result_laptop->fetch_assoc() )) {
                         echo '<div class="col sm-12 col-md-4">
                         <div class="card itemHomeCate homeItem" id="'.$row_laptop['Product_id'].'">
                           <img src="img/items/'.$row_laptop['Img_Link'].'" class="card-img-top" alt="..." height="350px">
                           <div class="card-body ">
                             <b>
-                              <p class="card-text bold">'.$row_laptop['Name'].'</p>
+                              <p class="card-text bold">';
+                              $string = $row_laptop['Name'];
+                              if (strlen($string) > 25) {
+  
+                                  // truncate string
+                                  $stringCut = substr($string, 0, 25);
+                                  $endPoint = strrpos($stringCut, ' ');
+  
+                                  //if the string doesn't contain any space then it will cut without word basis.
+                                  $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                  $string .= '...  </a>';
+                              }
+                              echo $string;
+                              // .$row_laptop['Name'].
+                              echo '</p>
                             </b>
-                            <p class="card-text">'.$row_laptop['Description'].'</p>
+                            <p class="card-text">';
+                            $string = $row_laptop['Description'];
+                            if (strlen($string) > 70) {
+
+                                // truncate string
+                                $stringCut = substr($string, 0, 70);
+                                $endPoint = strrpos($stringCut, ' ');
+
+                                //if the string doesn't contain any space then it will cut without word basis.
+                                $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                $string .= '... <b>Read More</b></a>';
+                            }
+                            echo $string;
+                            // .$row_laptop['Description'].
+                            
+                            echo '</p>
                             <b>
                               <p class="card-text bold">'.$row_laptop['Price'].'</p>
                             </b>
                           </div>
                         </div>
                       </div>';
-              
+                       
                     }
                 }
-
+                $count_laptop++;
               }
             }
           
@@ -208,7 +238,7 @@
     
         if ($result_laptop->num_rows > 0) {
             $count=0;
-            while(($row_laptop = $result_laptop->fetch_assoc()) & $count<1) {
+            while(($row_laptop = $result_laptop->fetch_assoc()) and $count<1) {
                 echo ' <div class="dealOfDay">
                 <div class="headText">
                   <h2>DEAL OF DAY</h2>
@@ -223,7 +253,7 @@
                   <h2>ShopNow</h2>
                 </div>
               </div>';
-              $count++;
+              $count = $count+1;
             }
          }
     
@@ -281,7 +311,8 @@
 
             if ($result->num_rows > 0) {
               // output data of each row
-              while($row = $result->fetch_assoc()) {
+              $count_access=0;
+              while(($row = $result->fetch_assoc()) and $count_access<3) {
                 $product_id=$row["product_id"];
 
 
@@ -294,20 +325,49 @@
                         <div class="card itemHomeCate homeItem" id="'.$row_laptop['Product_id'].'">
                           <img src="img/items/'.$row_laptop['Img_Link'].'" class="card-img-top" alt="..." height="350px">
                           <div class="card-body ">
-                            <b>
-                              <p class="card-text bold">'.$row_laptop['Name'].'</p>
-                            </b>
-                            <p class="card-text">'.$row_laptop['Description'].'</p>
-                            <b>
-                              <p class="card-text bold">'.$row_laptop['Price'].'</p>
-                            </b>
-                          </div>
+                          <b>
+                            <p class="card-text bold">';
+                            $string = $row_laptop['Name'];
+                            if (strlen($string) > 25) {
+
+                                // truncate string
+                                $stringCut = substr($string, 0, 25);
+                                $endPoint = strrpos($stringCut, ' ');
+
+                                //if the string doesn't contain any space then it will cut without word basis.
+                                $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                $string .= '...  </a>';
+                            }
+                            echo $string;
+                            // .$row_laptop['Name'].
+                            echo '</p>
+                          </b>
+                          <p class="card-text">';
+                          $string = $row_laptop['Description'];
+                          if (strlen($string) > 70) {
+
+                              // truncate string
+                              $stringCut = substr($string, 0, 70);
+                              $endPoint = strrpos($stringCut, ' ');
+
+                              //if the string doesn't contain any space then it will cut without word basis.
+                              $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                              $string .= '... <b>Read More</b></a>';
+                          }
+                          echo $string;
+                          // .$row_laptop['Description'].
+                          
+                          echo '</p>
+                          <b>
+                            <p class="card-text bold">'.$row_laptop['Price'].'</p>
+                          </b>
+                        </div>
                         </div>
                       </div>';
               
                     }
                 }
-
+                $count_access++;
               }
             }
           ?>
@@ -333,7 +393,7 @@
        
            if ($result_laptop->num_rows > 0) {
              $count=0;
-               while(($row_laptop = $result_laptop->fetch_assoc())& $count<3) {
+               while(($row_laptop = $result_laptop->fetch_assoc())and  $count<3) {
                    echo '<div class="col-sm-12 col-md-3">
                    <div class="card rounded-lg tipCard">
                      <img src="img/items/'.$row_laptop['Img_Link'].'" class="card-img-top" alt="..." height="200px">
@@ -354,46 +414,72 @@
   <div class="GameCategory">
     <div class="row mr-4">
       <div class="col-sm-1 col-md-9">
-
-        <!-- <div class="sliderCatHeading mt-2">
-          <h2>Gaming </h2>
-        </div> -->
         <div class="sliderItem ml-3 mt-5">
           <div class="row">
           <?php
 
-            $sql = "SELECT 	product_id FROM gaming_category WHERE trending_status='true'";
+            $sql = "SELECT product_id FROM gaming_category WHERE trending_status='true'";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
               // output data of each row
-              while($row = $result->fetch_assoc()) {
+              $count_gaming=0;
+              while(($row = $result->fetch_assoc()) and $count_gaming < 3) {
                 $product_id=$row["product_id"];
-
+               
 
                 $sql_laptop = "SELECT * FROM product WHERE Product_id ='$product_id'";
                 $result_laptop = $conn->query($sql_laptop);
-
+               
                 if ($result_laptop->num_rows > 0) {
                     while($row_laptop = $result_laptop->fetch_assoc()) {
-                        echo '<div class="col sm-12 col-md-4">
-                        <div class="card itemHomeCate homeItem" id="'.$row_laptop['Product_id'].'">
-                          <img src="img/items/'.$row_laptop['Img_Link'].'" class="card-img-top" alt="..." height="350px">
-                          <div class="card-body ">
-                            <b>
-                              <p class="card-text bold">'.$row_laptop['Name'].'</p>
-                            </b>
-                            <p class="card-text">'.$row_laptop['Description'].'</p>
-                            <b>
-                              <p class="card-text bold">'.$row_laptop['Price'].'</p>
-                            </b>
-                          </div>
+
+                      echo '<div class="col sm-12 col-md-4">
+                      <div class="card itemHomeCate homeItem" id="'.$row_laptop['Product_id'].'">
+                        <img src="img/items/'.$row_laptop['Img_Link'].'" class="card-img-top" alt="..." height="350px">
+                        <div class="card-body ">
+                          <b>
+                            <p class="card-text bold">';
+                            $string = $row_laptop['Name'];
+                            if (strlen($string) > 25) {
+
+                                // truncate string
+                                $stringCut = substr($string, 0, 25);
+                                $endPoint = strrpos($stringCut, ' ');
+
+                                //if the string doesn't contain any space then it will cut without word basis.
+                                $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                $string .= '...  </a>';
+                            }
+                            echo $string;
+                            // .$row_laptop['Name'].
+                            echo '</p>
+                          </b>
+                          <p class="card-text">';
+                          $string = $row_laptop['Description'];
+                          if (strlen($string) > 70) {
+
+                              // truncate string
+                              $stringCut = substr($string, 0, 70);
+                              $endPoint = strrpos($stringCut, ' ');
+
+                              //if the string doesn't contain any space then it will cut without word basis.
+                              $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                              $string .= '... <b>Read More</b></a>';
+                          }
+                          echo $string;
+                          // .$row_laptop['Description'].
+                          
+                          echo '</p>
+                          <b>
+                            <p class="card-text bold">'.$row_laptop['Price'].'</p>
+                          </b>
                         </div>
-                      </div>';
-              
+                      </div>
+                    </div>';         
                     }
                 }
-
+                $count_gaming++;
               }
             }
           ?>

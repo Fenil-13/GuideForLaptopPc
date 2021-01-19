@@ -1,3 +1,26 @@
+<?php
+$showAlert = false;
+$showError = false;
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+	
+	include 'utils/_dbconnect.php';
+	$username=$_POST["username"];
+		$password=$_POST["password"];
+			$confirm_password=$_POST["confirm_password"];
+			$exists=false;
+			if(($password == $confirm_password) && $exists==false){
+				$sql= "INSERT INTO `signup` (`username`, `password`, `dt`) VALUES ('$username', '$password', current_timestamp())";
+				$result = mysqli_query($conn,$sql);
+				if($result){
+					$showAlert=true;
+				}
+			}
+			else{
+				$showError = "Passwords do not match";
+			}
+}
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +71,20 @@
 
 <body>
     <!-- ----------------------------------navigation 1 ------------------------------------- -->
-    <div class="nav1 p-1">
+    	<?php
+		if($showAlert){
+		echo '
+		<div class="alert alert-success" role="alert"><strong>SUCCESSFULL!</strong> Your account is created 
+		successfully ,you can login now! </div>';
+
+
+		}if($showError){
+		echo '
+		<div class="alert alert-danger" role="alert">
+		  <strong>ERROR!</strong> '.$showError.'</div>';
+		}
+	?>
+	<div class="nav1 p-1">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark py-1">
             <a class="navbar-brand" href="#">
                 <img src="img/logos/logo1.png" width="30" height="30" class="d-inline-block align-top" alt=""
@@ -159,33 +195,36 @@
 
 
 <!--------------signup form--------->
+<div class = "container">
 <div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post">
-		<h2>Create an Account</h2>
-		<p class="hint-text">Sign up with your social media account or email address</p>
+    <form action="/LaptopArena/signup.php" method="post">
+
+	
+		<h2 class="text-center">Create an Account</h2>
+		<p class="text-center" class="hint-text">Sign up with your social media account or email address</p>
 		<div class="social-btn text-center">
 			<a href="#" class="btn btn-primary btn-lg"><i class="fa fa-facebook"></i> Facebook</a>
 			<a href="#" class="btn btn-info btn-lg"><i class="fa fa-twitter"></i> Twitter</a>
 			<a href="#" class="btn btn-danger btn-lg"><i class="fa fa-google"></i> Google</a>
 		</div>
-		<div class="or-seperator"><b>or</b></div>
-        <div class="form-group">
+		<div class="or-seperator" ><b><h4 class="text-center">OR</b></h4></div>
+        <div class="form-group ">
+		
         	<input type="text" class="form-control input-lg" name="username" placeholder="Username" required="required">
-        </div>
-		<div class="form-group">
-        	<input type="email" class="form-control input-lg" name="email" placeholder="Email Address" required="required">
-        </div>
-		<div class="form-group">
+        
+		</div>
+
+		<div class="form-group ">
             <input type="password" class="form-control input-lg" name="password" placeholder="Password" required="required">
         </div>
 		<div class="form-group">
             <input type="password" class="form-control input-lg" name="confirm_password" placeholder="Confirm Password" required="required">
         </div>  
-        <div class="form-group">
+        <div class="form-group ">
             <button type="submit" class="btn btn-primary btn-lg btn-block signup-btn">Sign Up</button>
         </div>
     </form>
-    <div class="text-center">Already have an account? <a href="#">Login here</a></div>
+    <div class="text-center">Already have an account? <a href="/LaptopArena/login.php">Login here</a></div>
 </div>
 </div>
 </body>

@@ -45,8 +45,7 @@
     <div class="row h-100 align-items-center py-5">
       <div class="col-lg-6">
         <h1 class="display-4">ABOUT US PAGE</h1>
-        <p class="lead text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-		sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p class="lead text-muted mb-0">WE ARE HAPPY TO SERVE AS YOUR DIGITAL PARTNER.</p>
         <p class="lead text-muted">
         </p>
       </div>
@@ -61,9 +60,8 @@
   <div class="container py-5">
     <div class="row align-items-center mb-5">
       <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
-        <h2 class="font-weight-light">Lorem ipsum dolor sit amet</h2>
-        <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-		sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <h2 class="font-weight-light">Web Development</h2>
+        <p class="font-italic text-muted mb-4">We are ensure you your bussiness website never hold on.
 		</p>
 		
       </div>
@@ -72,9 +70,8 @@
     <div class="row align-items-center">
       <div class="col-lg-5 px-5 mx-auto"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834136/img-2_vdgqgn.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
       <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
-        <h2 class="font-weight-light">Lorem ipsum dolor sit amet</h2>
-        <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-		sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <h2 class="font-weight-light">App Development</h2>
+        <p class="font-italic text-muted mb-4">Our idea bring to every phone its our goal
 		</p>
 		
       </div>
@@ -96,7 +93,7 @@
       <div class="col-xl-4 col-sm-6 mb-5">
         <div class="bg-white rounded shadow-sm py-5 px-4">
 		<img src="https://res.cloudinary.com/mhmd/image/upload/v1556834132/avatar-4_ozhrib.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-          <h5 class="mb-0">Fenny Gandhi</h5><span class="small text-uppercase text-muted">abc</span>
+          <h5 class="mb-0">Fenny Gandhi</h5><span class="small text-uppercase text-muted">UI/UX Developer</span>
           <ul class="social mb-0 list-inline mt-3">
             <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
             <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
@@ -110,7 +107,7 @@
       <!-- Team item-->
       <div class="col-xl-4 col-sm-6 mb-5">
         <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834130/avatar-3_hzlize.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-          <h5 class="mb-0">Fenil Moradiya</h5><span class="small text-uppercase text-muted">def</span>
+          <h5 class="mb-0">Fenil Moradiya</h5><span class="small text-uppercase text-muted">Software Development Enginner</span>
           <ul class="social mb-0 list-inline mt-3">
             <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
             <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
@@ -124,7 +121,7 @@
       <!-- Team item-->
       <div class="col-xl-4 col-sm-6 mb-5">
         <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834133/avatar-2_f8dowd.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-          <h5 class="mb-0">Krupal Patel</h5><span class="small text-uppercase text-muted">ghi</span>
+          <h5 class="mb-0">Krupal Patel</h5><span class="small text-uppercase text-muted">Front-end Developer</span>
           <ul class="social mb-0 list-inline mt-3">
             <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
             <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>

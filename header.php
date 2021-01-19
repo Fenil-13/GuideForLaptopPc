@@ -3,7 +3,7 @@
     echo '
     <div class="nav1 p-1">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark py-1">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="home2.php">
                 <img src="img/logos/logo1.png" width="30" height="30" class="d-inline-block align-top" alt=""
                     loading="lazy">
                 LaptopArena

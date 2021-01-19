@@ -73,10 +73,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="col-md-2 leftSection">
            <h1 class="ml-3">Laptop Arena Admin Panel</h1>
             <nav class="nav nav-pills flex-column flex-sm-column ml-3 mt-3">
-                <a class="flex-sm-fill text-sm-center nav-link " href="product.php">Add Product</a>
+            <a class="flex-sm-fill text-sm-center nav-link " href="index.php">Add Product</a>
                 <a class="flex-sm-fill text-sm-center nav-link" href="category.php">Add to Catergory</a>
                 <a class="flex-sm-fill text-sm-center nav-link active" href="tip.php">Add Tips</a>
-            </nav>
+                <a class="flex-sm-fill text-sm-center nav-link" href="update.php">Select Product</a>
+                <a class="flex-sm-fill text-sm-center nav-link" href="updateDetails.php">Update Product</a>
         </div>
         <div class="col-md-10">
         <div class="container">
