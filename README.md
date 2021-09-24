@@ -10,7 +10,7 @@ Technology we used
   BOOTSTRAP
    MYSQL DATABASE
    
-Here we conside ecommmerce site example.He we also make admin panel so that normal user not facing issue with PHPMYADMIN interface issues.
+Here we conside ecommmerce site example.We also made admin panel so that normal user not facing issue with PHPMYADMIN interface issues.
 
 
 here we design custom pc design interface with strongly backed by javascipt client side script.
